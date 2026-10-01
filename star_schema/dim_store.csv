@@ -1,0 +1,17 @@
+store_id,store_name,region,latitude,longitude
+S001,london oxford street,london,51.5159,-0.1431
+S002,manchester city centre,greater manchester,53.4808,-2.2426
+S003,birmingham bullring,west midlands,52.5094,-1.8933
+S004,leeds town centre,west yorkshire,53.8008,-1.5491
+S005,glasgow sauchiehall,glasgow,55.8642,-4.2592
+S006,edinburgh royal mile,edinburgh,55.9495,-3.1942
+S007,bristol city center,bristol,51.4506,-2.5879
+S008,liverpool bold street,merseyside,53.4084,-2.9916
+S009,newcastle grainger street,tyne and wear,54.9783,-1.6178
+S010,southampton high street,hampshire,50.9053,-1.4304
+S011,cardiff city centre,cardiff,51.4816,-3.1791
+S012,belfast city centre,belfast,54.5973,-5.9301
+S013,brighton seafront,east sussex,50.8617,-0.082
+S014,nottingham city centre,nottinghamshire,52.9548,-1.1581
+S015,york historic centre,north yorkshire,53.9576,-1.082
+S016,bath pump room,somerset,51.3796,-2.3599

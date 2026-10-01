@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS de_review_etl;
 CREATE DATABASE IF EXISTS de_review_etl;
 
-\c de-review-etl;
+\c de_review_etl;
 
 
 
@@ -34,12 +34,12 @@ CREATE TABLE dim_flavour (
 
 CREATE TABLE fact_sales (
     sale_id INT PRIMARY KEY,
-    store_id VARCHAR(10),
-    sale_timestamp TIMESTAMP,
-    flavour_id INT,
-    price_in_pence INT,
+    date_id INT NOT NULL,
+    store_id VARCHAR(10) NOT NULL,
+    flavour_id INT NOT NULL,
+    price_in_pence INT NOT NULL,
 
     FOREIGN KEY (store_id) REFERENCES dim_store(store_id),
-    FOREIGN KEY (flavour_id) REFERENCES dim_flavour(flavour_id,
+    FOREIGN KEY (flavour_id) REFERENCES dim_flavour(flavour_id),
     FOREIGN KEY (date_id) REFERENCES dim_date(date_id)
 );

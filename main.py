@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import requests
 
 def read_flavours():
     try:
@@ -93,13 +94,14 @@ def clean_sales(sales):
         dayfirst=True
     )
     invalid_timestamps = sales_cleaned["timestamp"].isna().sum()
+    sales_cleaned = sales_cleaned.dropna(subset=["timestamp"])
 
     sales_cleaned["price_in_pence"] = pd.to_numeric(
         sales_cleaned["price_in_pence"],
         errors="coerce"
     )
     invalid_prices = sales_cleaned["price_in_pence"].isna().sum()
-
+    sales_cleaned = sales_cleaned.dropna(subset=["price_in_pence"])
     negative_prices = (sales_cleaned["price_in_pence"] < 0).sum()
 
     sales_cleaned = sales_cleaned[
@@ -179,6 +181,7 @@ sales = pd.read_csv("cleaned_data/cleaned_sales.csv")
 stores = pd.read_csv("cleaned_data/cleaned_stores.csv")
 flavours = pd.read_csv("cleaned_data/cleaned_flavours.csv")
 
+
 def generate_dim_date(sales):
 
     sales["timestamp"] = pd.to_datetime(sales["timestamp"])
@@ -218,5 +221,72 @@ def generate_dim_date(sales):
 
     return dim_date
 
-dim_date = generate_dim_date(sales)
-dim_date.to_csv("cleaned_data/dim_date.csv", index=False)
+dim_date = generate_dim_date(sales_cleaned)
+dim_date.to_csv("star_schema/dim_date.csv", index=False)
+
+
+
+def generate_fact_sales(sales_cleaned):
+    # create date_id in sales
+    sales_cleaned["date_id"] = sales_cleaned["timestamp"].dt.strftime("%Y%m%d").astype(int)
+
+    fact_sales = sales_cleaned[[
+        "id",
+        "date_id",
+        "store_id",
+        "flavour_id",
+        "price_in_pence"
+    ]]
+    return fact_sales
+fact_sales = generate_fact_sales(sales_cleaned)
+os.makedirs("star_schema", exist_ok = True)
+fact_sales.to_csv("star_schema/fact_sales.csv", index= False)
+
+
+def generate_dim_store(cleaned_stores):
+    dim_store = cleaned_stores[[
+        "store_id",
+        "store_name",
+        "region",
+        "latitude",
+        "longitude"
+    ]]
+    return dim_store
+
+dim_store = generate_dim_store(cleaned_stores)
+dim_store.to_csv("star_schema/dim_store.csv", index = False)
+
+def generate_dim_flavour(cleaned_flavours):
+    dim_flavour = cleaned_flavours[[
+        "id",
+        "name",
+        "contains_nuts",
+        "cost_price_in_pence"
+    ]]
+    return dim_flavour
+
+dim_flavour = generate_dim_flavour(cleaned_flavours)
+dim_flavour.to_csv("star_schema/dim_flavour.csv", index= False)
+
+
+years = sorted(dim_date["year"].unique())
+bank_holiday_dates = set() # creates an empty python set, a set is like a list, it only stores unique values
+#### Enriching with bank holidays
+for year in years:
+    url = f"http://18.170.47.199:8000/uk/bank-holidays/{year}"
+    response = requests.get(url)
+    response.raise_for_status()
+    holidays = response.json() # holidays = [
+#     {"date": "2024-01-01", "name": "New Year's Day"},
+#     {"date": "2024-03-29", "name": "Good Friday"},
+#     {"date": "2024-04-01", "name": "Easter Monday"}
+# ]
+    for holiday in holidays: # loops around the list of holiday dictionaries one by one
+        bank_holiday_dates.add(pd.to_datetime(holiday["date"]).date()) # this gets the date from each holiday and adds it to the set, italso converts the it to pandas datetime and .date() converts it to plain date
+
+dim_date_path = "star_schema/dim_date.csv"
+dim_date["is_bank_holiday"] = dim_date["full_date"].dt.date.isin(bank_holiday_dates)
+dim_date.to_csv(dim_date_path, index=False)
+
+
+
