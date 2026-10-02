@@ -153,25 +153,28 @@ stores = read_stores()
 cleaned_stores = clean_stores(stores)
 
 
-def save_cleaned_flavours(cleaned_flavours):
-    os.makedirs("cleaned_data", exist_ok = True)
-    cleaned_flavours.to_csv("cleaned_data/cleaned_flavours.csv", index = False)
+
+
+def save_cleaned_flavours(cleaned_flavours, output_dir):
+    os.makedirs(output_dir, exist_ok=True)
+    output_path = os.path.join(output_dir, "cleaned_flavours.csv")
+    cleaned_flavours.to_csv(output_path, index=False)
     print("cleaned flavours saved successfully")
-cleaned_flavours = clean_flavours(flavours)
-save_cleaned_flavours(cleaned_flavours)
 
-def save_cleaned_sales(cleaned_sales):
-    os.makedirs("cleaned_data", exist_ok = True)
-    cleaned_sales.to_csv("cleaned_data/cleaned_sales.csv", index = False)
+
+def save_cleaned_sales(cleaned_sales, output_dir):
+    os.makedirs(output_dir, exist_ok=True)
+    output_path = os.path.join(output_dir, "cleaned_sales.csv")
+    cleaned_sales.to_csv(output_path, index=False)
     print("cleaned sales saved successfully")
-cleaned_sales = clean_sales(sales)
-save_cleaned_sales(cleaned_sales)
 
-def save_cleaned_stores(cleaned_stores):
-    cleaned_stores.to_csv("cleaned_data/cleaned_stores.csv", index = False)
+
+def save_cleaned_stores(cleaned_stores, output_dir):
+    os.makedirs(output_dir, exist_ok=True)
+    output_path = os.path.join(output_dir, "cleaned_stores.csv")
+    cleaned_stores.to_csv(output_path, index=False)
     print("cleaned stores saved successfully")
-cleaned_stores = clean_stores(stores)
-save_cleaned_stores(cleaned_stores)
+# save_cleaned_stores(cleaned_stores)
 
 
 
@@ -256,8 +259,10 @@ def generate_dim_store(cleaned_stores):
 dim_store = generate_dim_store(cleaned_stores)
 dim_store.to_csv("star_schema/dim_store.csv", index = False)
 
-def generate_dim_flavour(cleaned_flavours):
-    dim_flavour = cleaned_flavours[[
+
+
+def generate_dim_flavour(flavours_cleaned):
+    dim_flavour = flavours_cleaned[[
         "id",
         "name",
         "contains_nuts",
@@ -265,8 +270,14 @@ def generate_dim_flavour(cleaned_flavours):
     ]]
     return dim_flavour
 
-dim_flavour = generate_dim_flavour(cleaned_flavours)
-dim_flavour.to_csv("star_schema/dim_flavour.csv", index= False)
+
+flavours = read_flavours()
+flavours_cleaned = clean_flavours(flavours)
+
+dim_flavour = generate_dim_flavour(flavours_cleaned)
+
+os.makedirs("star_schema", exist_ok=True)
+dim_flavour.to_csv("star_schema/dim_flavour.csv", index=False)
 
 
 years = sorted(dim_date["year"].unique())
@@ -285,8 +296,12 @@ for year in years:
         bank_holiday_dates.add(pd.to_datetime(holiday["date"]).date()) # this gets the date from each holiday and adds it to the set, italso converts the it to pandas datetime and .date() converts it to plain date
 
 dim_date_path = "star_schema/dim_date.csv"
-dim_date["is_bank_holiday"] = dim_date["full_date"].dt.date.isin(bank_holiday_dates)
+dim_date["is_bank_holiday"] = dim_date["full_date"].dt.date.isin(bank_holiday_dates) # checks every date in full_date column and checks if its in bank_holiday_dates
+
+
 dim_date.to_csv(dim_date_path, index=False)
+
+
 
 
 
