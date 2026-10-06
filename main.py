@@ -302,6 +302,29 @@ dim_date["is_bank_holiday"] = dim_date["full_date"].dt.date.isin(bank_holiday_da
 dim_date.to_csv(dim_date_path, index=False)
 
 
+def read_weather():
 
 
+    url = (
+        "https://archive-api.open-meteo.com/v1/archive"
+        "?latitude=52.52"
+        "&longitude=13.41"
+        "&start_date=2026-09-20"
+        "&end_date=2026-10-04"
+        "&hourly=temperature_2m,precipitation,weather_code"
+        "&timezone=Europe/Berlin"
+    )
+    response = requests.get(url)
+    response.raise_for_status()
+    weather = response.json() # converts the response into a python dictionary
+    weathers = pd.DataFrame({"datetime": weather["hourly"]["time"],
+                            "temperature_c": weather["hourly"]["temperature_2m"],
+                             "precipitation_mm": weather["hourly"]["precipitation"], 
+                            "weather_code": weather["hourly"]["weather_code"] 
+                            })
+    
+    return weathers
+
+df = read_weather()
+print(df)
 
