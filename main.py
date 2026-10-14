@@ -309,8 +309,8 @@ def read_weather():
         "https://archive-api.open-meteo.com/v1/archive"
         "?latitude=52.52"
         "&longitude=13.41"
-        "&start_date=2026-09-20"
-        "&end_date=2026-10-04"
+        "&start_date=2024-01-01"
+        "&end_date=2026-09-01"
         "&hourly=temperature_2m,precipitation,weather_code"
         "&timezone=Europe/Berlin"
     )
@@ -369,7 +369,7 @@ df["date_id"] = (
     .dt.strftime("%Y%m%d")
     .astype(int)
 )
-
+print(df)
 sales_keys = fact_sales[["date_id", "store_id"]].drop_duplicates()
 
 df = df.rename(columns={
@@ -377,13 +377,15 @@ df = df.rename(columns={
     "precipitation_mm": "rainfall_mm",
     "weather_code": "weather_condition"
 })
+
+print(df)
                         
 df = df.merge(
     sales_keys, 
     on="date_id",
     how="inner"
 )
-                        
+print(df)                       
 
 
 
@@ -398,4 +400,10 @@ def generate_fact_weather(df):
     return fact_weather
 
 fact_weather = generate_fact_weather(df)
+print(fact_weather)
 fact_weather.to_csv("star_schema/fact_weather.csv", index = False)
+
+
+
+
+
