@@ -362,3 +362,40 @@ weather_code_map = {
 
 df["weather_code"] = df["weather_code"].map(weather_code_map)
 print(df)
+
+df = df.copy()
+df["date_id"] = (
+    pd.to_datetime(df["datetime"])
+    .dt.strftime("%Y%m%d")
+    .astype(int)
+)
+
+sales_keys = fact_sales[["date_id", "store_id"]].drop_duplicates()
+
+df = df.rename(columns={
+    "temperature_c": "temp_celsius",
+    "precipitation_mm": "rainfall_mm",
+    "weather_code": "weather_condition"
+})
+                        
+df = df.merge(
+    sales_keys, 
+    on="date_id",
+    how="inner"
+)
+                        
+
+
+
+def generate_fact_weather(df):
+    fact_weather = df[[
+        "date_id",
+        "store_id",
+        "temp_celsius",
+        "rainfall_mm",
+        "weather_condition"
+    ]]
+    return fact_weather
+
+fact_weather = generate_fact_weather(df)
+fact_weather.to_csv("star_schema/fact_weather.csv", index = False)
