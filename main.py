@@ -15,7 +15,6 @@ def read_flavours():
         print('CSV file not found')
 
 
-print(read_flavours())
 
 
 
@@ -421,14 +420,14 @@ print(fact_weather.head())
 daily_revenue = (
     fact_sales
     .groupby(["date_id", "store_id"], as_index=False)
-    .agg(revenue_pence=("price_in_pence", "sum"))
+    .agg(revenue_pence=("price_in_pence", "sum")) # sums up all the prices spent on that day in that specific store
 )
 
-daily_revenue["revenue_pounds"] = daily_revenue["revenue_pence"] / 100
+daily_revenue["revenue_pounds"] = daily_revenue["revenue_pence"] / 100 # converts to pounds
 
 # 2. Keep ALL observed conditions, once per day and store.
 daily_conditions = (
-    fact_weather[["date_id", "store_id", "weather_condition"]]
+    fact_weather[["date_id", "store_id", "weather_condition"]] 
     .dropna(subset=["weather_condition"])
     .drop_duplicates()
 )
