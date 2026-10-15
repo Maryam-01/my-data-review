@@ -5,3 +5,8 @@ def test_read_flavours():
     result = read_flavours()
     assert isinstance(result, pd.DataFrame)
     assert not result.empty
+
+def test_read_sales():
+    result = read_sales()
+    assert isinstance(result, pd.DataFrame)
+    assert not result.empty
