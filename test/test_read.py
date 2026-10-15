@@ -10,3 +10,8 @@ def test_read_sales():
     result = read_sales()
     assert isinstance(result, pd.DataFrame)
     assert not result.empty
+
+def test_read_stores():
+    result = read_stores()
+    assert isinstance(result, pd.DataFrame)
+    assert not result.empty
