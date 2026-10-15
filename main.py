@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 import requests
+import matplotlib.pyplot as plt
+from matplotlib.ticker import StrMethodFormatter
 
 def read_flavours():
     try:
@@ -403,6 +405,78 @@ fact_weather = generate_fact_weather(df)
 print(fact_weather)
 fact_weather.to_csv("star_schema/fact_weather.csv", index = False)
 
+
+
+
+
+print("Sales columns:", fact_sales.columns.tolist())
+print(fact_sales.head())
+
+print("Weather columns:", fact_weather.columns.tolist())
+print(fact_weather.head())
+
+
+
+# 1. Calculate total daily spending per store.
+daily_revenue = (
+    fact_sales
+    .groupby(["date_id", "store_id"], as_index=False)
+    .agg(revenue_pence=("price_in_pence", "sum"))
+)
+
+daily_revenue["revenue_pounds"] = daily_revenue["revenue_pence"] / 100
+
+# 2. Keep ALL observed conditions, once per day and store.
+daily_conditions = (
+    fact_weather[["date_id", "store_id", "weather_condition"]]
+    .dropna(subset=["weather_condition"])
+    .drop_duplicates()
+)
+
+# 3. Associate daily spending with every condition seen that day.
+revenue_weather = daily_revenue.merge(
+    daily_conditions,
+    on=["date_id", "store_id"],
+    how="inner",
+    validate="one_to_many" # one store/date can have many weather conditions
+)
+
+# 4. Total spending on days when each condition occurred.
+plot_data = revenue_weather.pivot_table(
+    index="weather_condition",
+    columns="store_id",
+    values="revenue_pounds",
+    aggfunc="sum"
+).sort_index()
+
+if plot_data.empty:
+    raise ValueError("No matching sales and weather data to plot.")
+
+print(plot_data.round(2))
+
+# 5. One line per store.
+ax = plot_data.plot(
+    kind="line",
+    marker="o",
+    linewidth=2,
+    figsize=(14, 7)
+)
+
+ax.set_title("Spending on Days When Each Weather Condition Occurred")
+ax.set_xlabel("Weather Condition — Categories Overlap")
+ax.set_ylabel("Total Spending on Associated Days (£)")
+ax.yaxis.set_major_formatter(StrMethodFormatter("£{x:,.2f}"))
+
+ax.legend(
+    title="Store",
+    bbox_to_anchor=(1.02, 1),
+    loc="upper left"
+)
+
+ax.grid(alpha=0.3)
+plt.xticks(rotation=45, ha="right")
+plt.tight_layout()
+plt.show()
 
 
 
