@@ -49,11 +49,17 @@ def clean_sales(sales):
 
     sales_cleaned["timestamp"] = pd.to_datetime(
         sales_cleaned["timestamp"],
-        errors="coerce",
-        dayfirst=True
+        errors="coerce", # turns invalid or unparsable dates into NaT rather than raising an error
+        dayfirst=True # day/month/year format
     )
     invalid_timestamps = sales_cleaned["timestamp"].isna().sum()
     sales_cleaned = sales_cleaned.dropna(subset=["timestamp"])
+    print(f"Original rows: {original_row_count}")
+
+    print(f"Invalid timestamps coerced to NaT: {invalid_timestamps}")
+    return sales_cleaned
+
+def clean_prices_in_sales(sales_cleaned):
 
     sales_cleaned["price_in_pence"] = pd.to_numeric(
         sales_cleaned["price_in_pence"],
@@ -72,8 +78,6 @@ def clean_sales(sales):
     # ---- Report ----
     print("SALES CLEANING SUMMARY")
     print("----------------")
-    print(f"Original rows: {original_row_count}")
-    print(f"Invalid timestamps coerced to NaT: {invalid_timestamps}")
     print(f"Invalid prices coerced to NaN: {invalid_prices}")
     print(f"Negative prices removed: {negative_prices}")
     print(f"Final rows: {final_row_count}")
