@@ -34,3 +34,14 @@ def test_converts_datetime_to_pd_format():
        pd.Timestamp("2024-01-06 11:47:08")
 
     ]
+
+def test_removes_invalid_datetime():
+    sales = pd.DataFrame({
+        "timestamp": [
+            "na", "not a date"
+        ]
+
+    })
+
+    result = clean_sales(sales)
+    assert result.empty
