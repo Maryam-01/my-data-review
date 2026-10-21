@@ -58,6 +58,30 @@ def test_na_prices_dropped():
        100, 200
     ]
 
+def test_na_prices_dropped():
+    sales = pd.DataFrame({"price_in_pence": [
+                              100,
+                              200,
+                              "na"
+                          ]
+                          })
+    result = clean_prices_in_sales(sales)
+    assert result["price_in_pence"].tolist() == [
+       100, 200
+    ]
+
+def test_negative_prices_dropped():
+    sales = pd.DataFrame({"price_in_pence": [
+                              100,
+                              200,
+                              -1
+                          ]
+                          })
+    result = clean_prices_in_sales(sales)
+    assert result["price_in_pence"].tolist() == [
+       100, 200
+    ]
+
     
 
     
