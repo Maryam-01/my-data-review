@@ -89,13 +89,14 @@ sales = read_sales()
 sales_cleaned = clean_sales(sales)
 print(sales_cleaned.head())
 
-def clean_stores(stores):
+def clean_stores_strip_store_name(stores):
     cleaned_stores = stores.copy()
     original_number_of_rows = len(cleaned_stores)
     cleaned_stores["store_name"] = (cleaned_stores["store_name"]
     .str.strip()
     .str.lower()
     )
+
 
     cleaned_stores["region"] = (cleaned_stores["region"]
     .str.strip()

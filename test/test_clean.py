@@ -82,6 +82,18 @@ def test_negative_prices_dropped():
        100, 200
     ]
 
+def test_store_name__white_space_stripped():
+    stores = pd.DataFrame({"store_name": [
+                              " McDonald's ",
+                              "  Tesco   ",
+                              "  Sainsbury's  "
+                          ]
+                          })
+    result = clean_stores(stores)
+    assert result["store_name"].tolist() == [
+       "mcdonald's", "tesco", "sainsbury's"
+    ]
+
     
 
     
