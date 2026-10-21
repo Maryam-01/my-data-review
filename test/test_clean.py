@@ -1,4 +1,4 @@
-from clean import clean_flavours, clean_sales,clean_stores, clean_prices_in_sales
+from clean import clean_flavours, clean_sales,clean_prices_in_sales, clean_stores_strip_store_name, clean_stores_strip_region
 import pandas as pd
 from reader import read_flavours, read_sales, read_stores
 
@@ -82,16 +82,31 @@ def test_negative_prices_dropped():
        100, 200
     ]
 
-def test_store_name__white_space_stripped():
+def test_store_name_white_space_stripped():
     stores = pd.DataFrame({"store_name": [
                               " McDonald's ",
                               "  Tesco   ",
                               "  Sainsbury's  "
                           ]
                           })
-    result = clean_stores(stores)
+    result = clean_stores_strip_store_name(stores)
     assert result["store_name"].tolist() == [
        "mcdonald's", "tesco", "sainsbury's"
+    ]
+
+def test_region_white_space_stripped():
+    stores = pd.DataFrame({"region":
+        [
+            " Oxford Street  ",
+            " Leicester SQuare  ",
+            " Picadilly Circus "
+        ]
+    })
+    result = clean_stores_strip_region(stores)
+    assert result["region"].tolist() == [
+        "oxford street",
+        "leicester square",
+        "picadilly circus"
     ]
 
     

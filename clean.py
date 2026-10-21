@@ -96,22 +96,27 @@ def clean_stores_strip_store_name(stores):
     .str.strip()
     .str.lower()
     )
+    cleaned_stores["store_name"] = (cleaned_stores["store_name"]
+                                    .str.replace("Center", "Centre", regex = False)
+    )
+    print(f"Original rows: {original_number_of_rows}")
+    return cleaned_stores
 
+def clean_stores_strip_region(cleaned_stores):
 
     cleaned_stores["region"] = (cleaned_stores["region"]
     .str.strip()
     .str.lower()
     )
 
-    cleaned_stores["store_name"] = (cleaned_stores["store_name"]
-                                    .str.replace("Center", "Centre", regex = False)
-    )
+
     rows_after_cleaning = len(cleaned_stores)
     print("STORES CLEANING SUMMARY")
     print("------------------------")
-    print(f"Original rows: {original_number_of_rows}")
+    
     print(f"rows_after_cleaning: {rows_after_cleaning}")
 
     return cleaned_stores
+
 stores = read_stores()
-cleaned_stores = clean_stores(stores)
+# cleaned_stores = clean_stores(stores)
