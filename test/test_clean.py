@@ -1,4 +1,4 @@
-from clean import clean_flavours, clean_sales,clean_stores
+from clean import clean_flavours, clean_sales,clean_stores, clean_prices_in_sales
 import pandas as pd
 from reader import read_flavours, read_sales, read_stores
 
@@ -45,3 +45,19 @@ def test_removes_invalid_datetime():
 
     result = clean_sales(sales)
     assert result.empty
+
+def test_na_prices_dropped():
+    sales = pd.DataFrame({"price_in_pence": [
+                              100,
+                              200,
+                              "na"
+                          ]
+                          })
+    result = clean_prices_in_sales(sales)
+    assert result["price_in_pence"].tolist() == [
+       100, 200
+    ]
+
+    
+
+    
