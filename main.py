@@ -280,27 +280,27 @@ dim_flavour = generate_dim_flavour(flavours_cleaned)
 os.makedirs("star_schema", exist_ok=True)
 dim_flavour.to_csv("star_schema/dim_flavour.csv", index=False)
 
-
-years = sorted(dim_date["year"].unique())
-bank_holiday_dates = set() # creates an empty python set, a set is like a list, it only stores unique values
+if __name__ == "__main__":
+    years = sorted(dim_date["year"].unique())
+    bank_holiday_dates = set() # creates an empty python set, a set is like a list, it only stores unique values
 #### Enriching with bank holidays
-for year in years:
-    url = f"http://18.170.47.199:8000/uk/bank-holidays/{year}"
-    response = requests.get(url)
-    response.raise_for_status()
-    holidays = response.json() # holidays = [
-#     {"date": "2024-01-01", "name": "New Year's Day"},
-#     {"date": "2024-03-29", "name": "Good Friday"},
-#     {"date": "2024-04-01", "name": "Easter Monday"}
-# ]
-    for holiday in holidays: # loops around the list of holiday dictionaries one by one
-        bank_holiday_dates.add(pd.to_datetime(holiday["date"]).date()) # this gets the date from each holiday and adds it to the set, italso converts the it to pandas datetime and .date() converts it to plain date
+    for year in years:
+        url = f"http://18.170.47.199:8000/uk/bank-holidays/{year}"
+        response = requests.get(url)
+        response.raise_for_status()
+        holidays = response.json() # holidays = [
+    #     {"date": "2024-01-01", "name": "New Year's Day"},
+    #     {"date": "2024-03-29", "name": "Good Friday"},
+    #     {"date": "2024-04-01", "name": "Easter Monday"}
+    # ]
+        for holiday in holidays: # loops around the list of holiday dictionaries one by one
+            bank_holiday_dates.add(pd.to_datetime(holiday["date"]).date()) # this gets the date from each holiday and adds it to the set, italso converts the it to pandas datetime and .date() converts it to plain date
 
-dim_date_path = "star_schema/dim_date.csv"
-dim_date["is_bank_holiday"] = dim_date["full_date"].dt.date.isin(bank_holiday_dates) # checks every date in full_date column and checks if its in bank_holiday_dates
+    dim_date_path = "star_schema/dim_date.csv"
+    dim_date["is_bank_holiday"] = dim_date["full_date"].dt.date.isin(bank_holiday_dates) # checks every date in full_date column and checks if its in bank_holiday_dates
 
 
-dim_date.to_csv(dim_date_path, index=False)
+    dim_date.to_csv(dim_date_path, index=False)
 
 
 def read_weather():

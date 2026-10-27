@@ -1,20 +1,4 @@
 date_id,store_id,temp_celsius,rainfall_mm,weather_condition
-20240106,S004,0.8,0.1,Light drizzle
-20240106,S003,0.8,0.1,Light drizzle
-20240106,S001,0.8,0.1,Light drizzle
-20240106,S009,0.8,0.1,Light drizzle
-20240106,S011,0.8,0.1,Light drizzle
-20240106,S002,0.8,0.1,Light drizzle
-20240106,S012,0.8,0.1,Light drizzle
-20240106,S006,0.8,0.1,Light drizzle
-20240106,S008,0.8,0.1,Light drizzle
-20240106,S005,0.8,0.1,Light drizzle
-20240106,S013,0.8,0.1,Light drizzle
-20240106,S014,0.8,0.1,Light drizzle
-20240106,S007,0.8,0.1,Light drizzle
-20240106,S010,0.8,0.1,Light drizzle
-20240106,S016,0.8,0.1,Light drizzle
-20240106,S015,0.8,0.1,Light drizzle
 20240106,S004,0.9,0.0,Overcast
 20240106,S003,0.9,0.0,Overcast
 20240106,S001,0.9,0.0,Overcast
@@ -383,22 +367,22 @@ date_id,store_id,temp_celsius,rainfall_mm,weather_condition
 20240106,S010,-1.8,0.2,Slight snowfall
 20240106,S016,-1.8,0.2,Slight snowfall
 20240106,S015,-1.8,0.2,Slight snowfall
-20240206,S016,8.6,0.0,Overcast
-20240206,S013,8.6,0.0,Overcast
-20240206,S014,8.6,0.0,Overcast
-20240206,S005,8.6,0.0,Overcast
-20240206,S015,8.6,0.0,Overcast
-20240206,S003,8.6,0.0,Overcast
-20240206,S008,8.6,0.0,Overcast
-20240206,S011,8.6,0.0,Overcast
-20240206,S006,8.6,0.0,Overcast
-20240206,S001,8.6,0.0,Overcast
-20240206,S010,8.6,0.0,Overcast
-20240206,S002,8.6,0.0,Overcast
-20240206,S012,8.6,0.0,Overcast
-20240206,S009,8.6,0.0,Overcast
-20240206,S004,8.6,0.0,Overcast
-20240206,S007,8.6,0.0,Overcast
+20240106,S004,-1.9,0.1,Slight snowfall
+20240106,S003,-1.9,0.1,Slight snowfall
+20240106,S001,-1.9,0.1,Slight snowfall
+20240106,S009,-1.9,0.1,Slight snowfall
+20240106,S011,-1.9,0.1,Slight snowfall
+20240106,S002,-1.9,0.1,Slight snowfall
+20240106,S012,-1.9,0.1,Slight snowfall
+20240106,S006,-1.9,0.1,Slight snowfall
+20240106,S008,-1.9,0.1,Slight snowfall
+20240106,S005,-1.9,0.1,Slight snowfall
+20240106,S013,-1.9,0.1,Slight snowfall
+20240106,S014,-1.9,0.1,Slight snowfall
+20240106,S007,-1.9,0.1,Slight snowfall
+20240106,S010,-1.9,0.1,Slight snowfall
+20240106,S016,-1.9,0.1,Slight snowfall
+20240106,S015,-1.9,0.1,Slight snowfall
 20240206,S016,8.2,0.1,Light drizzle
 20240206,S013,8.2,0.1,Light drizzle
 20240206,S014,8.2,0.1,Light drizzle
@@ -767,22 +751,22 @@ date_id,store_id,temp_celsius,rainfall_mm,weather_condition
 20240206,S009,9.5,0.3,Light drizzle
 20240206,S004,9.5,0.3,Light drizzle
 20240206,S007,9.5,0.3,Light drizzle
-20240306,S006,-0.2,0.0,Clear sky
-20240306,S011,-0.2,0.0,Clear sky
-20240306,S004,-0.2,0.0,Clear sky
-20240306,S002,-0.2,0.0,Clear sky
-20240306,S015,-0.2,0.0,Clear sky
-20240306,S008,-0.2,0.0,Clear sky
-20240306,S016,-0.2,0.0,Clear sky
-20240306,S012,-0.2,0.0,Clear sky
-20240306,S010,-0.2,0.0,Clear sky
-20240306,S005,-0.2,0.0,Clear sky
-20240306,S001,-0.2,0.0,Clear sky
-20240306,S009,-0.2,0.0,Clear sky
-20240306,S003,-0.2,0.0,Clear sky
-20240306,S007,-0.2,0.0,Clear sky
-20240306,S014,-0.2,0.0,Clear sky
-20240306,S013,-0.2,0.0,Clear sky
+20240206,S016,9.3,0.3,Light drizzle
+20240206,S013,9.3,0.3,Light drizzle
+20240206,S014,9.3,0.3,Light drizzle
+20240206,S005,9.3,0.3,Light drizzle
+20240206,S015,9.3,0.3,Light drizzle
+20240206,S003,9.3,0.3,Light drizzle
+20240206,S008,9.3,0.3,Light drizzle
+20240206,S011,9.3,0.3,Light drizzle
+20240206,S006,9.3,0.3,Light drizzle
+20240206,S001,9.3,0.3,Light drizzle
+20240206,S010,9.3,0.3,Light drizzle
+20240206,S002,9.3,0.3,Light drizzle
+20240206,S012,9.3,0.3,Light drizzle
+20240206,S009,9.3,0.3,Light drizzle
+20240206,S004,9.3,0.3,Light drizzle
+20240206,S007,9.3,0.3,Light drizzle
 20240306,S006,-0.9,0.0,Clear sky
 20240306,S011,-0.9,0.0,Clear sky
 20240306,S004,-0.9,0.0,Clear sky
@@ -1151,22 +1135,22 @@ date_id,store_id,temp_celsius,rainfall_mm,weather_condition
 20240306,S007,4.9,0.0,Overcast
 20240306,S014,4.9,0.0,Overcast
 20240306,S013,4.9,0.0,Overcast
-20240406,S007,13.4,0.0,Overcast
-20240406,S011,13.4,0.0,Overcast
-20240406,S015,13.4,0.0,Overcast
-20240406,S003,13.4,0.0,Overcast
-20240406,S005,13.4,0.0,Overcast
-20240406,S016,13.4,0.0,Overcast
-20240406,S006,13.4,0.0,Overcast
-20240406,S012,13.4,0.0,Overcast
-20240406,S001,13.4,0.0,Overcast
-20240406,S004,13.4,0.0,Overcast
-20240406,S002,13.4,0.0,Overcast
-20240406,S010,13.4,0.0,Overcast
-20240406,S013,13.4,0.0,Overcast
-20240406,S014,13.4,0.0,Overcast
-20240406,S008,13.4,0.0,Overcast
-20240406,S009,13.4,0.0,Overcast
+20240306,S006,4.9,0.0,Overcast
+20240306,S011,4.9,0.0,Overcast
+20240306,S004,4.9,0.0,Overcast
+20240306,S002,4.9,0.0,Overcast
+20240306,S015,4.9,0.0,Overcast
+20240306,S008,4.9,0.0,Overcast
+20240306,S016,4.9,0.0,Overcast
+20240306,S012,4.9,0.0,Overcast
+20240306,S010,4.9,0.0,Overcast
+20240306,S005,4.9,0.0,Overcast
+20240306,S001,4.9,0.0,Overcast
+20240306,S009,4.9,0.0,Overcast
+20240306,S003,4.9,0.0,Overcast
+20240306,S007,4.9,0.0,Overcast
+20240306,S014,4.9,0.0,Overcast
+20240306,S013,4.9,0.0,Overcast
 20240406,S007,12.7,0.0,Overcast
 20240406,S011,12.7,0.0,Overcast
 20240406,S015,12.7,0.0,Overcast
@@ -1535,22 +1519,22 @@ date_id,store_id,temp_celsius,rainfall_mm,weather_condition
 20240406,S014,15.6,0.0,Mainly clear
 20240406,S008,15.6,0.0,Mainly clear
 20240406,S009,15.6,0.0,Mainly clear
-20240506,S016,11.2,0.0,Overcast
-20240506,S013,11.2,0.0,Overcast
-20240506,S007,11.2,0.0,Overcast
-20240506,S009,11.2,0.0,Overcast
-20240506,S008,11.2,0.0,Overcast
-20240506,S012,11.2,0.0,Overcast
-20240506,S010,11.2,0.0,Overcast
-20240506,S001,11.2,0.0,Overcast
-20240506,S004,11.2,0.0,Overcast
-20240506,S006,11.2,0.0,Overcast
-20240506,S005,11.2,0.0,Overcast
-20240506,S011,11.2,0.0,Overcast
-20240506,S002,11.2,0.0,Overcast
-20240506,S015,11.2,0.0,Overcast
-20240506,S003,11.2,0.0,Overcast
-20240506,S014,11.2,0.0,Overcast
+20240406,S007,15.0,0.0,Mainly clear
+20240406,S011,15.0,0.0,Mainly clear
+20240406,S015,15.0,0.0,Mainly clear
+20240406,S003,15.0,0.0,Mainly clear
+20240406,S005,15.0,0.0,Mainly clear
+20240406,S016,15.0,0.0,Mainly clear
+20240406,S006,15.0,0.0,Mainly clear
+20240406,S012,15.0,0.0,Mainly clear
+20240406,S001,15.0,0.0,Mainly clear
+20240406,S004,15.0,0.0,Mainly clear
+20240406,S002,15.0,0.0,Mainly clear
+20240406,S010,15.0,0.0,Mainly clear
+20240406,S013,15.0,0.0,Mainly clear
+20240406,S014,15.0,0.0,Mainly clear
+20240406,S008,15.0,0.0,Mainly clear
+20240406,S009,15.0,0.0,Mainly clear
 20240506,S016,10.5,0.0,Overcast
 20240506,S013,10.5,0.0,Overcast
 20240506,S007,10.5,0.0,Overcast
@@ -1919,22 +1903,22 @@ date_id,store_id,temp_celsius,rainfall_mm,weather_condition
 20240506,S015,12.2,0.0,Overcast
 20240506,S003,12.2,0.0,Overcast
 20240506,S014,12.2,0.0,Overcast
-20240606,S002,14.1,0.0,Overcast
-20240606,S013,14.1,0.0,Overcast
-20240606,S010,14.1,0.0,Overcast
-20240606,S014,14.1,0.0,Overcast
-20240606,S009,14.1,0.0,Overcast
-20240606,S004,14.1,0.0,Overcast
-20240606,S016,14.1,0.0,Overcast
-20240606,S001,14.1,0.0,Overcast
-20240606,S011,14.1,0.0,Overcast
-20240606,S012,14.1,0.0,Overcast
-20240606,S008,14.1,0.0,Overcast
-20240606,S006,14.1,0.0,Overcast
-20240606,S007,14.1,0.0,Overcast
-20240606,S015,14.1,0.0,Overcast
-20240606,S005,14.1,0.0,Overcast
-20240606,S003,14.1,0.0,Overcast
+20240506,S016,11.7,0.0,Overcast
+20240506,S013,11.7,0.0,Overcast
+20240506,S007,11.7,0.0,Overcast
+20240506,S009,11.7,0.0,Overcast
+20240506,S008,11.7,0.0,Overcast
+20240506,S012,11.7,0.0,Overcast
+20240506,S010,11.7,0.0,Overcast
+20240506,S001,11.7,0.0,Overcast
+20240506,S004,11.7,0.0,Overcast
+20240506,S006,11.7,0.0,Overcast
+20240506,S005,11.7,0.0,Overcast
+20240506,S011,11.7,0.0,Overcast
+20240506,S002,11.7,0.0,Overcast
+20240506,S015,11.7,0.0,Overcast
+20240506,S003,11.7,0.0,Overcast
+20240506,S014,11.7,0.0,Overcast
 20240606,S002,14.2,0.0,Mainly clear
 20240606,S013,14.2,0.0,Mainly clear
 20240606,S010,14.2,0.0,Mainly clear
@@ -2303,22 +2287,22 @@ date_id,store_id,temp_celsius,rainfall_mm,weather_condition
 20240606,S015,14.2,0.0,Overcast
 20240606,S005,14.2,0.0,Overcast
 20240606,S003,14.2,0.0,Overcast
-20240706,S005,14.4,0.0,Mainly clear
-20240706,S006,14.4,0.0,Mainly clear
-20240706,S001,14.4,0.0,Mainly clear
-20240706,S004,14.4,0.0,Mainly clear
-20240706,S015,14.4,0.0,Mainly clear
-20240706,S013,14.4,0.0,Mainly clear
-20240706,S008,14.4,0.0,Mainly clear
-20240706,S003,14.4,0.0,Mainly clear
-20240706,S011,14.4,0.0,Mainly clear
-20240706,S007,14.4,0.0,Mainly clear
-20240706,S014,14.4,0.0,Mainly clear
-20240706,S009,14.4,0.0,Mainly clear
-20240706,S012,14.4,0.0,Mainly clear
-20240706,S002,14.4,0.0,Mainly clear
-20240706,S010,14.4,0.0,Mainly clear
-20240706,S016,14.4,0.0,Mainly clear
+20240606,S002,14.4,0.0,Partly cloudy
+20240606,S013,14.4,0.0,Partly cloudy
+20240606,S010,14.4,0.0,Partly cloudy
+20240606,S014,14.4,0.0,Partly cloudy
+20240606,S009,14.4,0.0,Partly cloudy
+20240606,S004,14.4,0.0,Partly cloudy
+20240606,S016,14.4,0.0,Partly cloudy
+20240606,S001,14.4,0.0,Partly cloudy
+20240606,S011,14.4,0.0,Partly cloudy
+20240606,S012,14.4,0.0,Partly cloudy
+20240606,S008,14.4,0.0,Partly cloudy
+20240606,S006,14.4,0.0,Partly cloudy
+20240606,S007,14.4,0.0,Partly cloudy
+20240606,S015,14.4,0.0,Partly cloudy
+20240606,S005,14.4,0.0,Partly cloudy
+20240606,S003,14.4,0.0,Partly cloudy
 20240706,S005,13.7,0.0,Mainly clear
 20240706,S006,13.7,0.0,Mainly clear
 20240706,S001,13.7,0.0,Mainly clear
@@ -2687,3 +2671,19 @@ date_id,store_id,temp_celsius,rainfall_mm,weather_condition
 20240706,S002,20.7,0.0,Overcast
 20240706,S010,20.7,0.0,Overcast
 20240706,S016,20.7,0.0,Overcast
+20240706,S005,19.8,0.0,Overcast
+20240706,S006,19.8,0.0,Overcast
+20240706,S001,19.8,0.0,Overcast
+20240706,S004,19.8,0.0,Overcast
+20240706,S015,19.8,0.0,Overcast
+20240706,S013,19.8,0.0,Overcast
+20240706,S008,19.8,0.0,Overcast
+20240706,S003,19.8,0.0,Overcast
+20240706,S011,19.8,0.0,Overcast
+20240706,S007,19.8,0.0,Overcast
+20240706,S014,19.8,0.0,Overcast
+20240706,S009,19.8,0.0,Overcast
+20240706,S012,19.8,0.0,Overcast
+20240706,S002,19.8,0.0,Overcast
+20240706,S010,19.8,0.0,Overcast
+20240706,S016,19.8,0.0,Overcast
