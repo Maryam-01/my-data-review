@@ -43,18 +43,7 @@ def test_generate_dim_flavour():
     })
 
     pd.testing.assert_frame_equal(result, expected)
-def generate_fact_sales(sales_cleaned):
-    # create date_id in sales
-    sales_cleaned["date_id"] = sales_cleaned["timestamp"].dt.strftime("%Y%m%d").astype(int)
 
-    fact_sales = sales_cleaned[[
-        "id",
-        "date_id",
-        "store_id",
-        "flavour_id",
-        "price_in_pence"
-    ]]
-    return fact_sales
 
 def test_generate_fact_sales():
     sales_cleaned = pd.DataFrame({
@@ -77,6 +66,27 @@ def test_generate_fact_sales():
         "store_id": [10, 20],
         "flavour_id": [3, 4],
         "price_in_pence": [250, 300]
+    })
+
+    pd.testing.assert_frame_equal(result, expected)
+
+def test_generate_dim_store():
+    stores = pd.DataFrame({
+        "store_id": [1,2,3],
+        "store_name": ["Oxford Street", "Westfield", "Manchester City Centre"],
+        "region": ["London", "Shepherd's Bush", "Manchester"],
+        "latitude": [51.5159, 53.4808, 52.5094],
+        "longitude": [-0.1431, -2.2426, -1.8933],
+        "extra_column": ["blah", "blah", "blah"]
+
+    })
+    result = generate_dim_store(stores)
+    expected = pd.DataFrame({
+        "store_id": [1,2,3],
+        "store_name": ["Oxford Street", "Westfield", "Manchester City Centre"],
+        "region": ["London", "Shepherd's Bush", "Manchester"],
+        "latitude": [51.5159, 53.4808, 52.5094],
+        "longitude": [-0.1431, -2.2426, -1.8933]
     })
 
     pd.testing.assert_frame_equal(result, expected)
