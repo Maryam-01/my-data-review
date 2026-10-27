@@ -23,4 +23,25 @@ def test_generate_dim_date():
         "is_weekend"
     ]
 
-    
+
+def test_generate_dim_flavour():
+    flavours_cleaned = pd.DataFrame({
+        "id": [1,2,3],
+        "name": ["Pistachio", "Vanilla", "Chocolate"],
+        "contains_nuts": [False, True, False],
+        "cost_price_in_pence": [80, 120, 10]
+        
+    })
+
+    result = generate_dim_flavour(flavours_cleaned)
+    expected = pd.DataFrame({
+        "id": [1, 2, 3],
+        "name": ["Pistachio", "Vanilla", "Chocolate"],
+        "contains_nuts": [False, True, False],
+        "cost_price_in_pence": [80, 120, 10]
+    })
+
+    pd.testing.assert_frame_equal(result, expected)
+
+
+
